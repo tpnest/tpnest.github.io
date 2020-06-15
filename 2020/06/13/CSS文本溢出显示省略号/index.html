@@ -107,8 +107,11 @@
 white-space:nowrap
 text-overflow:ellipsis;</code></pre><p><code>overflow:hidden;</code> 隐藏溢出的内容。<br><code>white-space:nowrap;</code> 强制文本在一行显示。<br><code>text-overflow:ellipsis;</code> 表示对象文本溢出时显示省略标记，省略标记插入的位置是最后一个字符。<br>只有这三个样式一起定义才可实现单行文本的溢出隐藏。</p>
 <h3 id="2-多行文本溢出显示省略号"><a href="#2-多行文本溢出显示省略号" class="headerlink" title="2.多行文本溢出显示省略号"></a>2.多行文本溢出显示省略号</h3><p><strong>语法：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">text-overflow: ellipsis;</span><br><span class="line">display: -webkit-box;</span><br><span class="line">-webkit-line-clamp: 2;</span><br><span class="line">-webkit-box-orient: vertical;</span><br></pre></td></tr></table></figure>
-<blockquote>
+<pre><code>overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;</code></pre><blockquote>
 <p>此方法只在webkit内核的浏览器上有效</p>
 </blockquote>
 <p><code>-webkit-line-clamp:n</code> 用来限制在一个块元素显示的文本的行数，n代表几行。</p>
