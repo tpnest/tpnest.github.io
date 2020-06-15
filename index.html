@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-<html lang="zh-Hans">
+<html lang="zh-ZH">
 
 <!-- Highlight.js -->
 <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/9.18.1/styles/a11y-dark.min.css" rel="stylesheet">
@@ -112,47 +112,11 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>今天在考试大纲上看见一道问题：<br><strong>操作系统的5大功能，一个接口，处理器管理和存储器管理的功能，涉及：进程的三种状态、进程同步的两种情况，进程互斥中的死锁和饥饿、三级调度和线程的概念。</strong><br>这些都是以前没有了解过的知识，于是在网上查阅了很多资料，简单涉及整理如下：</p>
-<h3 id="一、操作系统的五大功能"><a href="#一、操作系统的五大功能" class="headerlink" title="一、操作系统的五大功能"></a>一、操作系统的五大功能</h3><h5 id="1-处理机管理"><a href="#1-处理机管理" class="headerlink" title="1. 处理机管理"></a>1. 处理机管理</h5><p>处理器管理最基本的功能是处理中断事件，配置了操作系统后，就可对各种事件进行处理。处理器管理还有一个功能就是处理器调度，针对不同情况采取不同的调度策略。<br>   进程控制<br>   进程同步<br>   进程通信<br>   进程调度</p>
-<h5 id="2-存储器管理"><a href="#2-存储器管理" class="headerlink" title="2. 存储器管理"></a>2. 存储器管理</h5><p>存储器管理主要是指针对内存储器的管理。主要任务是分配内存空间，保证各作业占用的存储空间不发生矛盾，并使各作业在自己所属存储区中不互相干扰。<br>内存分配<br>内存保护<br>地址映射<br>内存扩充</p>
-<h5 id="3-设备管理"><a href="#3-设备管理" class="headerlink" title="3. 设备管理"></a>3. 设备管理</h5><p>设备管理是指负责管理各类外围设备，包括分配、启动和故障处理等。主要任务是当用户使用外部设备时，必须提出要求，待操作系统进行统一分配后方可使用。<br>I/O系统<br>缓存管理<br>设备分配<br>设备处理<br>虚拟设备</p>
-<h5 id="4-文件管理"><a href="#4-文件管理" class="headerlink" title="4. 文件管理"></a>4. 文件管理</h5><p>文件管理是指操作系统对信息资源的管理。在操作系统中，将负责存取的管理信息的部分称为文件系统。文件管理支持文件的存储、检索和修改等操作以及文件的保护功能。<br>文件存储空间管理<br>目录管理<br>文件的读写/管理和保护</p>
-<h5 id="5-作业管理"><a href="#5-作业管理" class="headerlink" title="5. 作业管理"></a>5. 作业管理</h5><p>每个用户请求计算机系统完成的一个独立的操作称为作业。作业管理包括作业的输入和输出，作业的调度与控制，这是根据用户的需要来控制作业运行的。</p>
-<h3 id="二、进程"><a href="#二、进程" class="headerlink" title="二、进程"></a>二、进程</h3><p>程序顺序执行时的特征：顺序性、封闭性、可再现性。<br>程序并发执行时的特征：动态性、制约性、并发性。</p>
-<ol>
-<li><p>进程的概念<br>可并发执行的程序在一个数据集合上的运行过程<br>进程是一个动态概念，而程序是一个静态概念。程序是有序的指令集合，没有任何执行的含义；而进程则强调执行过程，它动态的被创建，并被调度执行后消亡。</p>
-</li>
-<li><p>进程的三种状态<br>在进程的生命周期内，一个进程至少具有三种基本状态，它们是 执行状态、等待状态和就绪状态。</p>
-</li>
-<li><p>进程同步中的两种情况：</p>
-<ul>
-<li><p><strong>进程同步：</strong><br>所谓进程同步，是指对多个相关进程在执行顺序上的协调，操作系统中用于保证这种协调关系的相应的机制称为进程同步机制。</p>
-</li>
-<li><p><strong>进程互斥：</strong><br>当一个进程在临界区访问共享资源时，其它进程不能进入该临界区访问任何共享资源。<br>就是若干进程竞争进入临界区时相互之间形成的排他性关系，对临界区的实现表现为互斥关系的实现。<br>当一个进程进入临界区时，其他进程必须等待，直到临界区的进程数为0.<br>一组并发进程互斥执行时必须满足以下准则：</p>
-<ul>
-<li>空闲让进 ：当没有进程处于临界区时，可以允许一个请求进入临界区的进程立即进入临界区。</li>
-<li>忙则等待 ：当已有进程进入临界区时，其他试图进入临界区的进程必须等待。</li>
-<li>有限等待 ：对要求访问临界资源的进程，应保持能在有限时间内进入临界区，以免出现“死等”。</li>
-<li>让权等待 ：当进程不能进入临界区时，应释放处理机，以免出现“忙等”。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>死锁的概念<br>是指多个进程因竞争资源，进程推进顺序不当而造成的一种僵局，若无外力作用，这些进程都将无法向前推进。死锁是计算机系统和进程所处的一种状态。<br>死锁产生的四个必要条件：<br>互斥条件：一个资源每次只能被一个进程使用<br>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放<br>不剥夺条件：进程已获得的资源在未使用完之前，不能强行剥夺<br>循环等待条件：若干进程之间形成头尾相接的循环等待资源关系</p>
-</li>
-<li><p>饥饿<br>指一个可运行的进程尽管能继续执行，但被调度程序无限期地忽视，而不能调度执行的情形</p>
-</li>
-<li><p>线程的概念<br>线程是进程中的一个实体，是被系统独立调度和分派的基本单位。线程自己基本上不拥有系统资源，只拥有一点在运行中必不可少的资源（如程序计数器、一组寄存器和栈），但它可与同属一个进程的其他线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程；同一进程中的多个线程之间可以并发执行。使用线程的最大好处是在有多个任务需要处理机处理时，减少处理机的切换时间，而且线程的创建和结束所需要的系统开销也比进程的创建和结束要小得多。</p>
-<h3 id="三、操作系统接口分类"><a href="#三、操作系统接口分类" class="headerlink" title="三、操作系统接口分类"></a>三、操作系统接口分类</h3></li>
-</ol>
-<p><strong>操作系统是用户与计算机硬件系统之间的接口</strong>，OS向用户提供了如下两类接口：</p>
-<ol>
-<li>用户接口<br>该接口支持用户与OS之间进行交互，即由用户向OS请求提供特定的服务，系统则把服务的结果返回给用户；</li>
-<li>程序接口<br>OS向编程人员提供了“程序与操作系统的接口”，简称程序接口，也称应用程序API(Application Programming Interface)。该接口是为程序员在编程时使用，系统和应用程序通过这个接口，可在执行中访问系统的资源和取得OS的服务，它也是程序能取得操作系统服务的惟一途径。大多数操作系统的程序接口是由一组系统调用组成，每一个系统调用都是一个能完成特定功能的子程序。<br>此外，随着网络的发展，出现了一种面向网络的网络用户接口。<h3 id="四、操作系统的三级调度（作业、内存、进程）"><a href="#四、操作系统的三级调度（作业、内存、进程）" class="headerlink" title="四、操作系统的三级调度（作业、内存、进程）"></a>四、操作系统的三级调度（作业、内存、进程）</h3><img src="https://img-blog.csdnimg.cn/20200425150048940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUyODAyNQ==,size_16,color_FFFFFF,t_70" alt="操作系统的三级调度"></li>
-<li>高级调度 (外存 –&gt; 内存)<br>高级调度，就是按某种算法在外存中处于后备队列的作业中挑选一个(或多个)作业，给它分配内存等必要资源，并建立相应的进程(建立PCB)，以使它(们)获得竞争处理机的权利。<br><img src="https://img-blog.csdnimg.cn/20200425145600682.png" alt="Pandao editor.md"></li>
-<li>中级调度 (外存 –&gt; 内存)<br>中级调度就是决定将哪个挂起状态的进程从外存重新调回内存。和高级调度区分，虽然同样是从外存调到内存，但高级调度是调入，中级调度是调回。<br><img src="https://img-blog.csdnimg.cn/20200425145731829.png" alt="Pandao editor.md"></li>
-<li>低级调度 (内存 –&gt; CPU)<br>低级调度的主要任务是按照某种规则从就绪队列中选取一个进程，将CPU分配给它。低级调度是操作系统中最基本的一种调度，在一般的操作系统中都必须配置低级调度。而且低级调度的频率很高，一般几十毫秒一次。<br><img src="https://img-blog.csdnimg.cn/20200425145934323.png" alt="Pandao editor.md"><h3 id="五、参考资料"><a href="#五、参考资料" class="headerlink" title="五、参考资料"></a>五、参考资料</h3><a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/192?fr=aladdin" target="_blank" rel="noopener">百度百科：操作系统</a><br><a href="https://wenku.baidu.com/view/a175e82efc0a79563c1ec5da50e2524de418d01a.html" target="_blank" rel="noopener">百度文库：第二章：进程与处理机管理</a><br><a href="https://blog.csdn.net/weixin_43528025/article/details/105749896" target="_blank" rel="noopener">博主：JosiasAnas</a><br>以及其他来源</li>
-</ol>
- 
+<h3 id="一、操作系统的五大功能"><a href="#一、操作系统的五大功能" class="headerlink" title="一、操作系统的五大功能"></a>一、操作系统的五大功能</h3><h5 id="1-处理机管理"><a href="#1-处理机管理" class="headerlink" title="1. 处理机管理"></a>1. 处理机管理</h5><p>处理器管理最基本的功能是处理中断事件，配置了操作系统后，就可对各种事件进行处理。处理器管理还有一个功能就是处理器调度，针对不同情况采取不同的调度策略。<br>   进程控制<br>   进程同步<br>   进程通信<br>   进程调度<br> 
+      <a class="article-more-link" href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD-%E8%BF%9B%E7%A8%8B/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -358,7 +322,7 @@ display: -webkit-box;
     <ul>
       <li>
         Copyrights &copy;
-        2015-2020
+        2019-2020
         <i class="ri-heart-fill heart_icon"></i> TP
       </li>
     </ul>
@@ -453,10 +417,6 @@ display: -webkit-box;
         <i class="ri-search-line"></i>
       </a>
       
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
       
     </li>
   </ul>
@@ -725,7 +685,7 @@ display: -webkit-box;
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=61536287&auto=1&height=32"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=152459487&auto=1&height=32"></iframe>
 </div>
 
 <style>
